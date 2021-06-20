@@ -10,7 +10,7 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/bankDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://admin-bhavya:test@cluster0.dvcuo.mongodb.net/bankDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const customersSchema = {
   accountNo: String,
@@ -239,7 +239,7 @@ app.post("/transfers",(req,res)=>{
  if (port == null || port == "") {
    port = 3000;
  }
- 
+
 app.listen(port,function(){
   console.log("Server started at port Successfully");
 });
