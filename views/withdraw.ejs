@@ -1,0 +1,20 @@
+<%- include("header"); %>
+
+<div class=" p-5 mt-5  d-flex justify-content-center bg-content align-items-center">
+  <form action="/withdraw" method="post" class="w-50 m-5 p-5 form">
+    <h2>Withdraw Money</h2>
+    <div class="mb-3">
+      <label for="withdrawAccount" class="form-label">Enter Account Number :</label>
+      <input type="text" class="form-control" id="withdrawAccount" name="withdrawAccount" required>
+    </div>
+    <div class="mb-3">
+      <label for="withdrawAmount" class="form-label">Enter Amount to Withdraw</label>
+      <input type="text" class="form-control" id="withdrawAmount" name="withdrawAmount" required>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Withdraw Money</button>
+  </form>
+
+</div>
+
+
+<%- include("footer"); %>

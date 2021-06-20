@@ -1,0 +1,73 @@
+<%- include("header"); %>
+
+<div class="text-center w-100 p-5 mt-5 bg-content">
+  <div class="d-flex justify-content-between">
+    <h1 class="p-3"><strong>Customers Record</strong></h1>
+    <form action="/Customers" method="POST" class="m-1">
+    <button type="button" class="align-items-center p-3"style="background: #dcdee0; border:0; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-plus fa-lg m-1" aria-hidden="true"></i>ADD CUSTOMER</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header  d-flex justify-content-center" style="background:#b0b3b5;">
+            <h5 class="modal-title" id="exampleModalLabel"><strong>Enter Details</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-start">
+            <div class="mb-3">
+              <label for="Account" class="form-label">Enter Account Number :</label>
+              <input type="text" class="form-control" id="Account" name="Account" required>
+            </div>
+            <div class="mb-3">
+              <label for="AccountName" class="form-label">Enter Customer Name :</label>
+              <input type="text" class="form-control" id="AccountName" name="AccountName" required>
+            </div>
+            <div class="mb-3">
+              <label for="AccountEmail" class="form-label">Enter Email ID :</label>
+              <input type="text" class="form-control" id="AccountEmail" name="AccountEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="AccountBalance" class="form-label">Enter Current Balance :</label>
+              <input type="text" class="form-control" id="AccountBalance" name="AccountBalance" required>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-secondary">Add Customer</button>
+          </div>
+        </div>
+      </div>
+  </div>
+    </form>
+  </div>
+
+<table>
+  <tr>
+    <th>Account Number</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Balance</th>
+  </tr>
+  <% customerdetails.forEach(function(customer){ %>
+
+    <tr>
+
+        <td><%= customer.accountNo %></td>
+        <td><a href="/userprofile/<%= customer.name %>"><%= customer.name %></a></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.currentBalance %></td>
+
+    </tr>
+
+
+  <% }) %>
+
+
+
+</table>
+
+
+</div>
+
+
+
+<%- include("footer"); %>

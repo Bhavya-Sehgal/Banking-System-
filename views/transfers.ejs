@@ -1,0 +1,26 @@
+<%- include("header"); %>
+
+
+<div class=" p-5 mt-5  d-flex justify-content-center bg-content align-items-center">
+  <form action="/transfers" method="post" class="w-50 p-5 formTransfer">
+    <h2>Tranfer Money</h2>
+    <div class="mb-3">
+      <label for="fromAccount" class="form-label">Enter Account Number (Tranfer from) :</label>
+      <input type="text" class="form-control" id="fromAccount" name="fromAccount" required>
+    </div>
+    <div class="mb-3">
+      <label for="toAccount" class="form-label">Enter Account Number (Tranfer to) :</label>
+      <input type="text" class="form-control" id="toAccount" name="toAccount" required>
+    </div>
+    <div class="mb-3">
+      <label for="amount" class="form-label">Enter Amount to Transfer</label>
+      <input type="text" class="form-control" id="amount" name="amount" required>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Transfer Money</button>
+  </form>
+
+</div>
+
+
+
+<%- include("footer"); %>

@@ -1,0 +1,60 @@
+<%- include("header"); %>
+
+<div class="text-center p-5 d-flex justify-content-center mt-5 mb-0 bg-content align-items-center">
+
+    <div class="profileCard mt-5">
+      <div class="card-header p-3 d-flex justify-content-between" style="background:#b0b3b5; width:100%">
+        <strong>Account Details</strong>
+        <form action="/userprofile/<%= foundCustomer.name %>" method="POST" class="m-1">
+            <input type="hidden" name="deleteAccount" value="<%= foundCustomer.accountNo %>">
+            <button type="button" style="background:#b0b3b5; border:0;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-trash fa-lg"></i></button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header  d-flex justify-content-center" style="background:#b0b3b5;">
+                    <h5 class="modal-title" id="exampleModalLabel"><strong>DELETE ACCOUNT</strong></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <h4>Do You Want to Continue?</h4>
+                  </div>
+                  <div class="modal-footer border-top-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-secondary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <div class="card-body">
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <i class="fa fa-user fa-10x" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title pt-3 text-secondary"><%= foundCustomer.name %></h5>
+              <p class="card-text"><strong>Account Number : </strong> <%= foundCustomer.accountNo %></p>
+              <p class="card-text"><strong>Email-Id : </strong> <%= foundCustomer.email %></p>
+              <p class="card-text"><strong>Current Balance : </strong><%= foundCustomer.currentBalance %></p>
+              <a href="/deposit" class="btn btn-outline-secondary m-1">Deposit Money</a>
+              <a href="/withdraw" class="btn btn-outline-secondary m-1">Withdraw Money</a>
+              <a href="/transfers" class="btn btn-outline-secondary m-1">Transfer Money</a>
+              <br>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+</div>
+
+
+<%- include("footer"); %>

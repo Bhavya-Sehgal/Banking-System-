@@ -1,0 +1,21 @@
+<%- include("header"); %>
+
+
+<div class=" p-5 mt-5  d-flex justify-content-center bg-content align-items-center">
+  <form action="/deposit" method="post" class="w-50 m-5 p-5 form">
+    <h2>Deposit Money</h2>
+    <div class="mb-3">
+      <label for="depositAccount" class="form-label">Enter Account Number :</label>
+      <input type="text" class="form-control" id="depositAccount" name="depositAccount" required>
+    </div>
+    <div class="mb-3">
+      <label for="depositAmount" class="form-label">Enter Amount to Deposit</label>
+      <input type="text" class="form-control" id="depositAmount" name="depositAmount" required>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Deposit Money</button>
+  </form>
+
+</div>
+
+
+<%- include("footer"); %>
