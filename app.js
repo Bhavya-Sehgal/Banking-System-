@@ -141,10 +141,21 @@ app.get("/failure",function(req,res){
   res.render("failure");
 });
 
-app.post("/deposit",(req,res)=>{
-  console.log(req.body);
+app.post("/deposit", async (req,res)=>{
+  //console.log(req.body);
   const depositAccountNo = req.body.depositAccount;
   const depositMoney = req.body.depositAmount;
+  let foundData ;
+  try{
+    foundData = await Customer.findOne({accountNo: depositAccountNo});
+  }
+  catch(err){
+    console.log(err);
+  }
+  if(!foundData){
+    res.redirect("/failure");
+  }
+
   Customer.findOneAndUpdate({accountNo : depositAccountNo}, {$inc: {currentBalance : depositMoney}})
   .then(updatedValue=>{
     console.log("Money Deposited Successfully");
@@ -154,12 +165,24 @@ app.post("/deposit",(req,res)=>{
     console.log(err);
     res.redirect("/failure");
   });
+
+
  });
 
-app.post("/withdraw",(req,res)=>{
+app.post("/withdraw",async(req,res)=>{
   console.log(req.body);
   const withdrawAccountNo = req.body.withdrawAccount;
   const withdrawMoney = req.body.withdrawAmount;
+  let foundData ;
+  try{
+    foundData = await Customer.findOne({accountNo: withdrawAccountNo});
+  }
+  catch(err){
+    console.log(err);
+  }
+  if(!foundData){
+    res.redirect("/failure");
+  }
     Customer.findOneAndUpdate({accountNo : withdrawAccountNo}, {$inc: {currentBalance : - withdrawMoney}}, (error,response)=>{
       if(!error){
              console.log("Money Withdrawn Successfully");
@@ -174,11 +197,23 @@ app.post("/withdraw",(req,res)=>{
 
 });
 
-app.post("/transfers",(req,res)=>{
+app.post("/transfers",async(req,res)=>{
   console.log(req.body);
   const fromTransfer = req.body.fromAccount;
   const toTransfer = req.body.toAccount;
   const amount = req.body.amount;
+  let foundTransferTo ;
+  let foundTransferFrom;
+  try{
+    foundTransferFrom = await Customer.findOne({accountNo: fromTransfer});
+    foundTransferTo = await Customer.findOne({accountNo: toTransfer});
+  }
+  catch(err){
+    console.log(err);
+  }
+  if(!foundTransferTo || !foundTransferFrom){
+    res.redirect("/failure");
+  }
   if(fromTransfer===toTransfer){
     res.redirect("/failure");
   }
